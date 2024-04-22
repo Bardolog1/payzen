@@ -1,16 +1,23 @@
 import React from "react";
-import {  Text, View } from "react-native";
+import {  Text, View, Platform } from "react-native";
 import RepositoryList from "./ReposotoryList";
-import AppBar from "./AppBar";
 import { Redirect, Route, Routes } from "react-router-native";
 import StyledText from "./StyledText";
+import AppBar from "./AppBar";
 
 
+const AppBarSel = Platform.select({
+    web: () => require('./AppBar.jsx').default,
+    android: () => require('./AppBar.jsx').default,
+    ios: () => require('./IOSAppBar.jsx').default,
+    default: () => require('./AppBar.jsx').default
+})()
 
 const Main = () => {
     return (
         <View style={style.container}>
-            <AppBar />
+        <AppBarSel />
+        
 
             <Routes>
                 <Route path="/" element={<RepositoryList />} exact/>
