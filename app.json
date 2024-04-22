@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "payzen",
-    "slug": "payzen",
+    "name": "react-native-course ",
+    "slug": "react-native-course ",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
