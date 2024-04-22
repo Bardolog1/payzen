@@ -1,10 +1,9 @@
 import React from "react";
-import { View } from "react-native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image, View, Platform } from "react-native";
 import StyledText from "./StyledText";
 import RepositoryStats from "./RepositoryStats";
 import theme from "../theme.js";
-import { Image } from "react-native";
+
 
 
 const RepositoryItemHeader = (props) => (
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
         marginTop:4,
         marginBottom: 4,
         color: theme.colors.mainBackground,
-        backgroundColor: theme.colors.primary,
+        backgroundColor: Platform.OS === 'android'? 'red' : theme.colors.secondary,
         alignSelf: 'flex-start',
      
         borderRadius: 5,
