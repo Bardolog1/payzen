@@ -51,7 +51,11 @@ const styles = StyleSheet.create({
         marginTop:4,
         marginBottom: 4,
         color: theme.colors.mainBackground,
-        backgroundColor: Platform.OS === 'android'? 'red' : theme.colors.secondary,
+        backgroundColor: Platform.select({
+            ios: 'red',
+            android: theme.colors.primary,
+            default: 'purple',
+        }),
         alignSelf: 'flex-start',
      
         borderRadius: 5,
