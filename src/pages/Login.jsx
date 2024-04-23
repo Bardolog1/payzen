@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
             backgroundColor: 'white',
             fontSize: 20,
         },
+        error: {
+            color: 'red',
+            fontSize: 15,
+        }
     }
 );
 
@@ -34,11 +38,15 @@ const styles = StyleSheet.create({
 const FormikInputValue = ({ name, ...props }) => {
     const [field, meta, helpers ] = useField(name);
     return (
+        <>
         <StyledTextInput
+            error={meta.error}
             onChangeText={(value) => helpers.setValue(value)}
             value={field.value}
             {...props }
         />
+        {meta.error &&  <StyledText style={styles.error}>{meta.error}</StyledText>  }
+        </>
     );
 };
 
@@ -46,8 +54,8 @@ const validateFields = values =>{
     const errors = {}
     if(!values.username){
         errors.username = 'Email is required'
-    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)){
-        errors.email = 'Invalid email address'
+    } else if(!/^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$/i.test(values.username)){
+        errors.username = 'Invalid email address'
     }
     if(!values.password){
         errors.password = 'Password is required'
