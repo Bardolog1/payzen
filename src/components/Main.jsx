@@ -4,24 +4,20 @@ import RepositoryList from "./ReposotoryList";
 import { Redirect, Route, Routes } from "react-router-native";
 import StyledText from "./StyledText";
 import AppBar from "./AppBar";
+import Login from "../pages/Login";
 
 
-const AppBarSel = Platform.select({
-    web: () => require('./AppBar.jsx').default,
-    android: () => require('./AppBar.jsx').default,
-    ios: () => require('./IOSAppBar.jsx').default,
-    default: () => require('./AppBar.jsx').default
-})()
+
 
 const Main = () => {
     return (
         <View style={style.container}>
-        <AppBarSel />
+        <AppBar />
         
 
             <Routes>
                 <Route path="/" element={<RepositoryList />} exact/>
-                <Route path="/signin" element={<StyledText>Sign in</StyledText>} exact/>       
+                <Route path="/signin" element={<Login/>} exact/>       
            </Routes>
                
            

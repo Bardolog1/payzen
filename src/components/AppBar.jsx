@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     container: {
 
         backgroundColor: theme.appBar.primary,
-        paddingTop: Constants.statusBarHeight + 20,
+        paddingTop: Constants.statusBarHeight,
         flexDirection: 'row',
         width: '100%',
 
