@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import StyledText from "./StyledText";
 
 const parseThousands = (num) => {
-    return  num>=1000 ? `${Math.round(num / 1000 ) / 10}k` : String(num);
+    return  num>=1000 ? String(`${Math.round(num / 1000 ) / 10}k`) : String(num);
  };
  
  

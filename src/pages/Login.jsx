@@ -4,7 +4,7 @@ import { Formik, useField } from 'formik';
 import { Button, View, StyleSheet } from 'react-native';
 import StyledTextInput from '../components/StyledTextInput';
 import StyledText from '../components/StyledText';
-
+import {loginSchema} from '../validationsSchemas/login.js';
 
 
 const initialValues = {
@@ -50,34 +50,18 @@ const FormikInputValue = ({ name, ...props }) => {
     );
 };
 
-const validateFields = values =>{
-    const errors = {}
-    if(!values.username){
-        errors.username = 'Email is required'
-    } else if(!/^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$/i.test(values.username)){
-        errors.username = 'Invalid email address'
-    }
-    if(!values.password){
-        errors.password = 'Password is required'
-    }else if(values.password.length < 8){
-        errors.password = 'Password must be at least 8 characters long'
-    }
-    console.log('errors', errors)
-    return errors;
-    
-}
+
 
 
 export default function Login() {
     return (
-        <Formik validate={validateFields} initialValues={initialValues} onSubmit={values => console.log(values)}> 
+        <Formik validationSchema ={loginSchema} initialValues={initialValues} onSubmit={values => console.log(values)}> 
             {
                 ({handleSubmit}) => {
                     return (
                         <View style={styles.form}>  
                             <FormikInputValue name='username' placeholder='Username'/>
-                            <FormikInputValue name='password' placeholder='PassWord' secureTextEntry
-                            />
+                            <FormikInputValue name='password' placeholder='PassWord' secureTextEntry/>
                             <Button onPress={handleSubmit} title="Log In" />
                         </View>
                     )
